@@ -7,28 +7,28 @@
   <meta content="telephone=no,email=no" name="format-detection">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Vue CheckList Component Example</title>
+  <title>Vue OptionList Component Example</title>
 </head>
 <body>
   <div id="app">
     <div id="example">
       <fieldset>
         <legend>普通</legend>
-        <vue-check-list :list="list" @change="onChange1"></vue-check-list>
+        <vue-option-list :list="list" @change="onChange1"></vue-option-list>
         <div>
           所选：{{selected1}}
         </div>
       </fieldset>
       <fieldset>
         <legend>默认值</legend>
-        <vue-check-list :list="list" :selected="['2', '3', '5']" @change="onChange2"></vue-check-list>
+        <vue-option-list :list="list" :selected="['2', '3', '5']" @change="onChange2"></vue-option-list>
         <div>
           所选：{{selected2}}
         </div>
       </fieldset>
       <fieldset>
         <legend>单选</legend>
-        <vue-check-list :list="list" :multi="false" @change="onChange3"></vue-check-list>
+        <vue-option-list :list="list" :multi="false" @change="onChange3"></vue-option-list>
         <div>
           所选：{{selected3}}
         </div>
@@ -36,7 +36,7 @@
       <fieldset>
         <legend>组件方法</legend>
         <p>注：全选／全不选／反选三个方法只支持多选框</p>
-        <vue-check-list :list="list" :selected="['2']" ref="checkList4" @change="onChange4"></vue-check-list>
+        <vue-option-list :list="list" :selected="['2']" ref="optionList4" @change="onChange4"></vue-option-list>
         <div>
           <button @click="selectAll">全选</button>
           <button @click="unselectAll">全不选</button>
@@ -49,17 +49,17 @@
       </fieldset>
       <fieldset>
         <legend>自定义样式</legend>
-        <vue-check-list class="custom" :list="list" @change="onChange5"></vue-check-list>
+        <vue-option-list class="custom" :list="list" @change="onChange5"></vue-option-list>
         <div>
           所选：{{selected5}}
         </div>
         <h4>自定义模版：</h4>
         <p>注：此功能需要Vue 2.1以上，<a href="https://cn.vuejs.org/v2/guide/components.html#作用域插槽" target="_blank">点击这里了解更多</a></p>
-        <vue-check-list class="custom" :list="list" @change="onChange6">
+        <vue-option-list class="custom" :list="list" @change="onChange6">
           <template scope="props">
             <span class="text">{{props.item.text}}</span>
           </template>
-        </vue-check-list>
+        </vue-option-list>
         <div>
           所选：{{selected6}}
         </div>
@@ -68,14 +68,14 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/vue/2.1.3/vue.js"></script>
-  <script src="vue-checklist.js"></script>
+  <script src="vue-optionlist.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <script>
   (function () {
     new Vue({
       el: '#app',
       components: {
-        'vue-check-list': VueCheckList
+        'vue-option-list': VueOptionList
       },
       data () {
         return {
@@ -123,16 +123,16 @@
           this.selected4 = val
         },
         selectAll: function () {
-          this.$refs.checkList4.selectAll()
+          this.$refs.optionList4.selectAll()
         },
         unselectAll: function () {
-          this.$refs.checkList4.unselectAll()
+          this.$refs.optionList4.unselectAll()
         },
         selectReverse: function () {
-          this.$refs.checkList4.selectReverse()
+          this.$refs.optionList4.selectReverse()
         },
         getValues: function () {
-          alert(this.$refs.checkList4.getValues())
+          alert(this.$refs.optionList4.getValues())
         },
         onChange5: function (val) {
           this.selected5 = val
